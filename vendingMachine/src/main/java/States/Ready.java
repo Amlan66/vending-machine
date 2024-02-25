@@ -6,6 +6,10 @@ public class Ready implements State{
 
     private VendingMachine vendingMachine;
 
+    public Ready(VendingMachine vendingMachine){
+        this.vendingMachine = vendingMachine;
+    }
+
     @Override
     public void collectCash(int cash) {
         //TODO
