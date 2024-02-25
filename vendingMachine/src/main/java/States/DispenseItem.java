@@ -11,7 +11,7 @@ public class DispenseItem implements State{
     }
 
     @Override
-    public void dispenseChange(String productCode) throws Exception {
+    public void dispenseChange(String productCode) {
         throw new RuntimeException("Machine is Dispensing Item, cannot dispense change");
     }
 

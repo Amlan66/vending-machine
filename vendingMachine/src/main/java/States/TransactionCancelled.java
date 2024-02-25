@@ -12,7 +12,7 @@ public class TransactionCancelled implements State{
     }
 
     @Override
-    public void dispenseChange(String productCode) throws Exception {
+    public void dispenseChange(String productCode) {
         throw new RuntimeException("Machine is cancelling transaction, cannot dispense change");
     }
 

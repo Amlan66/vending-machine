@@ -12,7 +12,7 @@ public class DispenseChange implements State{
     }
 
     @Override
-    public void dispenseChange(String productCode) throws Exception {
+    public void dispenseChange(String productCode) {
         //TODO
     }
 

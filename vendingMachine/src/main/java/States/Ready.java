@@ -12,7 +12,7 @@ public class Ready implements State{
     }
 
     @Override
-    public void dispenseChange(String productCode) throws Exception {
+    public void dispenseChange(String productCode) {
         throw new RuntimeException("Unable to dispense change as no cash has been collected");
     }
 
