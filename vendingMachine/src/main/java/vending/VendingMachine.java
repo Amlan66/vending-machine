@@ -21,10 +21,17 @@ public class VendingMachine {
     public int getCashCollected(){
         return this.cashCollected;
     }
-
-    public VendingMachine addCash(int cash){
+    public VendingMachine setCollectedCash(int cash){
         this.cashCollected = cash;
         return this;
+    }
+    public VendingMachine addCash(int cash){
+        this.cashCollected += cash;
+        return this;
+    }
+    public int calculateChange(String productCode){
+        int change = cashCollected-productCodeToPriceMap.getOrDefault(productCode,0);
+        return change;
     }
 
     public void dispenseChange(String productCode) {

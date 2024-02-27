@@ -5,6 +5,10 @@ import main.java.vending.VendingMachine;
 public class DispenseItem implements State{
     private VendingMachine vendingMachine;
 
+    public DispenseItem(VendingMachine vendingMachine){
+        this.vendingMachine = vendingMachine;
+    }
+
     @Override
     public void collectCash(int cash) {
         throw new RuntimeException("Machine is Dispensing Item, cannot collect cash");

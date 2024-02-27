@@ -6,6 +6,10 @@ public class DispenseChange implements State{
 
     private VendingMachine vendingMachine;
 
+    public DispenseChange(VendingMachine vendingMachine){
+        this.vendingMachine = vendingMachine;
+    }
+
     @Override
     public void collectCash(int cash) {
         throw new RuntimeException("Machine is Dispensing Change, cannot collect cash");
@@ -13,7 +17,10 @@ public class DispenseChange implements State{
 
     @Override
     public void dispenseChange(String productCode) {
-        //TODO
+        int change = this.vendingMachine.calculateChange(productCode);
+        System.out.println("Change of "+ change+" is dispensed for item "+ productCode+ " is dispensed");
+        this.vendingMachine.setState(new DispenseItem(this.vendingMachine));
+        this.vendingMachine.dispenseItem(productCode);
     }
 
     @Override
