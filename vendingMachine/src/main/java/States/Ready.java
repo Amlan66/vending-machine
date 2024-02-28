@@ -12,21 +12,23 @@ public class Ready implements State{
 
     @Override
     public void collectCash(int cash) {
-        //TODO
+        this.vendingMachine.addCash(cash);
     }
 
     @Override
     public void dispenseChange(String productCode) {
-        throw new RuntimeException("Unable to dispense change as no cash has been collected");
+        this.vendingMachine.setState(new DispenseChange(this.vendingMachine));
+        this.vendingMachine.dispenseChange(productCode);
     }
 
     @Override
     public void dispenseItem(String productCode) {
-        //TODO
+        throw new RuntimeException("Transaction has not been initiated, Item cannot be dispensed");
     }
 
     @Override
     public void cancelTransaction() {
-        //TODO
+        this.vendingMachine.setState(new TransactionCancelled(this.vendingMachine));
+        this.vendingMachine.cancelTransaction();
     }
 }

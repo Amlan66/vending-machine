@@ -16,6 +16,7 @@ public class VendingMachine {
         this.state = new Ready(this);
         this.productCodeToPriceMap = productCodeToPriceMap;
         this.productCodeToQuantityMap = productCodeToQuantityMap;
+        this.cashCollected = 0;
     }
 
     public int getCashCollected(){
@@ -25,10 +26,13 @@ public class VendingMachine {
         this.cashCollected = cash;
         return this;
     }
-    public VendingMachine addCash(int cash){
+    public void addCash(int cash){
         this.cashCollected += cash;
-        return this;
     }
+    public void collectCash(int cash){
+        this.state.collectCash(cash);
+    }
+
     public int calculateChange(String productCode){
         int change = cashCollected-productCodeToPriceMap.getOrDefault(productCode,0);
         return change;
@@ -49,13 +53,13 @@ public class VendingMachine {
         return this;
     }
 
-    public VendingMachine removeItem(String productCode, int quantity){
+    public VendingMachine removeItem(String productCode){
         int currentStock = productCodeToQuantityMap.getOrDefault(productCode,0);
 
-        if(currentStock < quantity)
+        if(currentStock == 0)
             throw new RuntimeException("Item cannot be dispensed because of insufficient stock");
 
-        this.productCodeToQuantityMap.put(productCode, currentStock-quantity);
+        this.productCodeToQuantityMap.put(productCode, currentStock-1);
         return this;
     }
 

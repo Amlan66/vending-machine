@@ -21,7 +21,9 @@ public class DispenseItem implements State{
 
     @Override
     public void dispenseItem(String productCode) {
-        //TODO
+        this.vendingMachine.removeItem(productCode);
+        System.out.println("Dispensing item "+ productCode);
+        this.vendingMachine.setState(new Ready(this.vendingMachine));
     }
 
     @Override

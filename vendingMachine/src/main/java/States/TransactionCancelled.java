@@ -6,6 +6,10 @@ public class TransactionCancelled implements State{
 
     private VendingMachine vendingMachine;
 
+    public TransactionCancelled(VendingMachine vendingMachine){
+        this.vendingMachine = vendingMachine;
+    }
+
     @Override
     public void collectCash(int cash) {
         throw new RuntimeException("Machine is cancelling transaction, cannot collect cash");
@@ -23,6 +27,8 @@ public class TransactionCancelled implements State{
 
     @Override
     public void cancelTransaction() {
-        //TODO
+        System.out.println("Returning collected cash amount "+ this.vendingMachine.getCashCollected());
+        this.vendingMachine.setCollectedCash(0);
+        this.vendingMachine.setState(new Ready(this.vendingMachine));
     }
 }
