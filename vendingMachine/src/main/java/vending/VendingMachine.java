@@ -29,6 +29,7 @@ public class VendingMachine {
     public void addCash(int cash){
         this.cashCollected += cash;
     }
+
     public void collectCash(int cash){
         this.state.collectCash(cash);
     }
