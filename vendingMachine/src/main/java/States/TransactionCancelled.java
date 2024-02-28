@@ -30,5 +30,6 @@ public class TransactionCancelled implements State{
         System.out.println("Returning collected cash amount "+ this.vendingMachine.getCashCollected());
         this.vendingMachine.setCollectedCash(0);
         this.vendingMachine.setState(new Ready(this.vendingMachine));
+        System.out.println("Machine is ready to take new orders");
     }
 }

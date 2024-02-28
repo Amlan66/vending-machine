@@ -19,6 +19,10 @@ public class GoodPathScenario {
         vendingMachine.collectCash(25);
         vendingMachine.dispenseChange("fruit");
 
+        System.out.println("********New operation**********");
+        vendingMachine.collectCash(20);
+        vendingMachine.cancelTransaction();
+
     }
 
 }

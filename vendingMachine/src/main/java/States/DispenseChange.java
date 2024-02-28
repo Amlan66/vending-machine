@@ -19,6 +19,7 @@ public class DispenseChange implements State{
     public void dispenseChange(String productCode) {
         int change = this.vendingMachine.calculateChange(productCode);
         System.out.println("Change of "+ change+" is dispensed.");
+        this.vendingMachine.setCollectedCash(this.vendingMachine.getCashCollected()-change);
         this.vendingMachine.setState(new DispenseItem(this.vendingMachine));
         this.vendingMachine.dispenseItem(productCode);
     }

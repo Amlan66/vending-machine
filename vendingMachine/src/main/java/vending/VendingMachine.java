@@ -60,6 +60,7 @@ public class VendingMachine {
             throw new RuntimeException("Item cannot be dispensed because of insufficient stock");
 
         this.productCodeToQuantityMap.put(productCode, currentStock-1);
+        this.cashCollected -= productCodeToPriceMap.get(productCode);
     }
 
     public void cancelTransaction(){
