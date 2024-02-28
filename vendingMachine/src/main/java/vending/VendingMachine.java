@@ -22,9 +22,9 @@ public class VendingMachine {
     public int getCashCollected(){
         return this.cashCollected;
     }
-    public VendingMachine setCollectedCash(int cash){
+
+    public void setCollectedCash(int cash){
         this.cashCollected = cash;
-        return this;
     }
     public void addCash(int cash){
         this.cashCollected += cash;
@@ -46,29 +46,27 @@ public class VendingMachine {
         this.state.dispenseItem(productCode);
     }
 
-    public VendingMachine addItem(String productCode, int quantity){
+    public void addItem(String productCode, int quantity){
         if(quantity < 1)
             throw new RuntimeException("Invalid Quantity added, has to be minimum one");
         this.productCodeToQuantityMap.put(productCode, this.productCodeToQuantityMap.getOrDefault(productCode,0)+quantity);
-        return this;
     }
 
-    public VendingMachine removeItem(String productCode){
+    public void removeItem(String productCode){
         int currentStock = productCodeToQuantityMap.getOrDefault(productCode,0);
 
         if(currentStock == 0)
             throw new RuntimeException("Item cannot be dispensed because of insufficient stock");
 
         this.productCodeToQuantityMap.put(productCode, currentStock-1);
-        return this;
     }
 
     public void cancelTransaction(){
         this.state.cancelTransaction();
     }
-    public VendingMachine setState(State state){
+
+    public void setState(State state){
         this.state = state;
-        return this;
     }
 
     public State getState() {
